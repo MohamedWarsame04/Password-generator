@@ -24,18 +24,47 @@ if (Number.isNaN(lengthPassword)) {
       return null; 
     }
 //If requirments are met display on console how many number the password is
-else {console.log(lengthPassword)
-}
+else return length;
   }
 
 
+//get password criteria function
 const getPasswordCriteria = () => {
-  return [
-    "abcdefghijklmnopqrstuvwxyz",
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "0123456789",
-    " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
-  ];
+  //vaariable to store boolean for inclusion of lowercase characters
+  const lowercase = confirm ("do you want lowercase in your password?")
+
+  //vaariable to store boolean for inclusion of lowercase characters
+  const uppercase = confirm ("do you want uppercase in your password?")
+
+   //vaariable to store boolean for inclusion of numeric characters
+  const numeric = confirm ("do you want numeric in your password?")
+
+   //vaariable to store boolean for inclusion of special characters
+  const specialCharacter = confirm ("do you want special characteristics in your password?")
+
+  //variable to store conditions of the password in array
+  const passwordRequirements = [];
+
+  //conditional statement for lowercase
+    if (lowercase) {passwordRequirements.push ("abcdefghijklmnopqrstuvwxyz")} 
+
+  //conditional statement for uppercase  
+  
+    if (uppercase) {passwordRequirements.push ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+
+  //conditional statement for numeric  
+  
+  if (numeric) {passwordRequirements.push ("0123456789")}
+
+  //conditional statement for special characteristic  
+  
+  if (specialCharacter) {passwordRequirements.push (" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~")}
+  
+  return passwordRequirements;
+
+
+
+ 
 };
 
 const createRandomPassword = () => {
