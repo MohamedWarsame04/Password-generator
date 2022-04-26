@@ -29,7 +29,7 @@ else return length;
 
 
 //get password criteria function
-const getPasswordCriteria = () => {
+const getPasswordCriteria = (passwordLength, passwordCriteria) => {
   //vaariable to store boolean for inclusion of lowercase characters
   const lowercase = confirm ("do you want lowercase in your password?")
 
@@ -82,8 +82,27 @@ const generatePassword = () => {
 
   // create random password
   const password = createRandomPassword(passwordLength, passwordCriteria);
+  const passwordArray = [];
 
-  return password;
+  for (let i=0; 1<passwordLength; i++) {
+    //select random categories from the array
+    const randCategories = Math.floor (Math.random() * passwordCriteria.length)
+
+    //get random categories
+    const randCategories = passwordCriteria[randCategoriesIndex];
+
+    //get random index
+    const randIndex = Math.floor(Math.random() *passwordCriteria.length)
+
+    //get random character
+    const randCharacter = randCategories.charAt()
+
+
+
+
+  }
+
+
 };
 
 // Write password to the #password input
