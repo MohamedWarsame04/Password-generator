@@ -1,7 +1,22 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
-//get the password length function
 
+// main function to generate the random password
+const generatePassword = () => {
+  // get the password length
+  const passwordLength = getPasswordLength();
+    // get the password criteria
+  const passwordCriteria = getPasswordCriteria();
+  if (passwordCriteria.length === 0) {
+    alert("choose minimum one option")
+    return null;
+  } else {
+    const randomPassword = createRandomPassword([passwordLength, passwordCriteria]);
+    return randomPassword;
+}
+
+};
+//get the password length function
 const getPasswordLength = () => {
 
 const lengthPassword = prompt ("what is the password length you'd desire")
@@ -24,12 +39,13 @@ if (Number.isNaN(lengthPassword)) {
       return null; 
     }
 //If requirments are met display on console how many number the password is
-else return length;
-  }
+else 
+return lengthPassword;
+  };
 
 
 //get password criteria function
-const getPasswordCriteria = (passwordLength, passwordCriteria) => {
+const getPasswordCriteria = () => {
   //vaariable to store boolean for inclusion of lowercase characters
   const lowercase = confirm ("do you want lowercase in your password?")
 
@@ -46,19 +62,24 @@ const getPasswordCriteria = (passwordLength, passwordCriteria) => {
   const passwordRequirements = [];
 
   //conditional statement for lowercase
-    if (lowercase) {passwordRequirements.push ("abcdefghijklmnopqrstuvwxyz")} 
+    if (lowercase) {passwordRequirements.push("abcdefghijklmnopqrstuvwxyz")
+  } 
 
   //conditional statement for uppercase  
   
-    if (uppercase) {passwordRequirements.push ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+    if (uppercase) {passwordRequirements.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+  }
 
   //conditional statement for numeric  
   
-  if (numeric) {passwordRequirements.push ("0123456789")}
+  if (numeric) {passwordRequirements.push("0123456789")
+}
 
   //conditional statement for special characteristic  
-  
-  if (specialCharacter) {passwordRequirements.push (" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~")}
+
+  if (specialCharacter) {passwordRequirements.push("!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~")
+}
+  console.log("passwordRequirements" + passwordRequirements);
   
   return passwordRequirements;
 
@@ -67,43 +88,28 @@ const getPasswordCriteria = (passwordLength, passwordCriteria) => {
  
 };
 
-const createRandomPassword = () => {
-  return "kdUE28(@d0";
-};
-
-// main function to generate the random password
-const generatePassword = () => {
-  // get the password length
-  const passwordLength = getPasswordLength();
-  
-
-  // get the password criteria
-  const passwordCriteria = getPasswordCriteria();
-
-  // create random password
-  const password = createRandomPassword(passwordLength, passwordCriteria);
+  // create random password function
+ const createRandomPassword = (passwordLength, passwordCriteria) => {
   const passwordArray = [];
 
-  for (let i=0; 1<passwordLength; i++) {
+  for (let i = 0; 1 < passwordLength; i+= 1) {
     //select random categories from the array
-    const randCategories = Math.floor (Math.random() * passwordCriteria.length)
+    const randCategoriesIndex = Math.floor(Math.random() * passwordCriteria.length);
+    console.log(randCategoriesIndex);
 
     //get random categories
     const randCategories = passwordCriteria[randCategoriesIndex];
 
     //get random index
-    const randIndex = Math.floor(Math.random() *passwordCriteria.length)
+    const randIndex = Math.floor(Math.random() * randCategories.length);
 
     //get random character
-    const randCharacter = randCategories.charAt()
-
-
-
-
+    const randCharacter = randCategories.charAt(randIndex);
+    passwordArray.push(randCharacter);
   }
-
-
-};
+  console.log("passwordarray " + passwordArray);
+  return passwordArray.join("");
+    };
 
 // Write password to the #password input
 const writePassword = () => {
